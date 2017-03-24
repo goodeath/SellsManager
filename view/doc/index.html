@@ -1,0 +1,43 @@
+<?php
+  # Routes controller
+  require_once CONTROLLER.'routes.php';
+  # Initialize controller
+  $route = new routes();
+  # add routes
+  $route->addRoute("",VIEW."html/index.php")
+        ->addRoute("Evolucao",VIEW."html/reports/evolution.php","evolution","evolution")
+        ->addRoute("Evolucao/Detalhes",VIEW."html/reports/evolution/values.php")
+        ->addRoute("Comparacao",VIEW."html/reports/comparison.php")
+        ->addRoute("Comparacao/Grafico",VIEW."html/reports/comparison_graph.php","comparison","comparison")
+        ->addRoute("Fotografe",VIEW."html/reports/fotografe.php")
+        ->addRoute("Fotografe/Grafico",VIEW."html/reports/fotografe_graph.php","fotografe","fotografe")
+        ->addRoute("Participacao",HTML."reports/participation.php")
+        ->addRoute("Participacao/Grafico",VIEW."html/reports/participation_graph.php","participation","participation")
+        ->addRoute("Movimentos",VIEW."html/reports/moves.php")
+        ->addRoute("Movimentos/Grafico",VIEW."html/reports/moves_graph.php","moves","moves")
+        ->addRoute("Tendencias",VIEW."html/reports/trend.php")
+        ->addRoute("Tendencias/Grafico",VIEW."html/reports/trend_graph.php","trend","trend")
+        ->addRoute("Ranking",VIEW."html/reports/ranking.php")
+        ->addRoute("Ranking/Grafico",VIEW."html/reports/ranking_graph.php","ranking","ranking")
+        ->addRoute("Inativo",VIEW."html/reports/inative.php")
+        ->addRoute("Inativo/Grafico",VIEW."html/reports/inative_graph.php","inative","inative")
+        ->addRoute("Atualizar",VIEW."html/index.php","field","refresh")
+         ;
+        
+  
+  
+  # Get route
+  $data = $route->getRoute($uri);
+  if($data[2] != null){
+    require_once $data[1];
+    # Controller
+    $controller = new $data[2]($route);
+    # Action
+    $controller->{$data[3]}();
+  }else{
+    require_once $data[0];
+  }
+    
+  
+
+?>

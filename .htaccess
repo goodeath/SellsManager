@@ -1,0 +1,19 @@
+FallbackResource /vendas/index.php
+
+#<IfModule mod_suphp.c>
+# Loads the module mod_suphp.c
+#suPHP_ConfigPath /home/cegdi764/public_html/
+# Specifies the path of the php.ini file. Use your legitimate path.
+#<Files php.ini>
+# Specifies the file php.ini
+#order allow,deny
+# This is ordering to check the allowed list first then the deny list.
+#deny from all
+# Denies everyone from viewing the file specified above
+#</Files>
+# Closes the files tag
+#</IfModule>
+# Closes the modular line
+# Habilitar o PHP 5.4
+#AddHandler application/x-httpd-php54 .php
+#SetEnv TZ America/Sao_Paulo
